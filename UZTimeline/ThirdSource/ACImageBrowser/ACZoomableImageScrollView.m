@@ -180,7 +180,7 @@
             
             if (fitSize.width>self.bounds.size.width) {
                 CGFloat timesThanFrameWidth = (imageWidth / self.bounds.size.width);
-                scale_max =  timesThanFrameWidth * ACZISV_zoom_bigger;
+//                scale_max =  timesThanFrameWidth * ACZISV_zoom_bigger;
                 fitSize.width = self.bounds.size.width;
                 fitSize.height = imageHeight / timesThanFrameWidth;
 
