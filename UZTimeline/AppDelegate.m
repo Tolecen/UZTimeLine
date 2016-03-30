@@ -17,6 +17,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UZAppStartUp *appStartUp = [UZAppStartUp appStartUp];
     self.window.rootViewController = appStartUp.rootViewController;

@@ -273,10 +273,11 @@
     nc.navigationBarHidden = YES;
     nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:nc animated:YES completion:nil];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
 }
 -(void)dismissAtIndex:(NSInteger)index
 {
-    
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 -(void)toSettingPage

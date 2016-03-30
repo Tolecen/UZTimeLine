@@ -41,7 +41,7 @@
         for (int i = 0; i<9; i++) {
             UIImageView * imgv = [[UIImageView alloc] initWithFrame:CGRectMake(15+10*(i%3-1+1)+picWidth*(i%3), picWidth*(int)(i/3)+10*(int)(i/3), picWidth, picWidth)];
             imgv.userInteractionEnabled = YES;
-            imgv.backgroundColor = [UIColor colorWithHexString:@"cbcbcb"];
+            imgv.backgroundColor = [UIColor colorWithHexString:@"e1e0e0"];
             imgv.tag = i+1;
             [self.imgBGV addSubview:imgv];
             
@@ -65,7 +65,7 @@
         [self.contentView addSubview:self.friendCircleBtn];
         
         self.lineV = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth, 1)];
-        self.lineV.backgroundColor = [UIColor colorWithHexString:@"adafaf"];
+        self.lineV.backgroundColor = [UIColor colorWithHexString:@"e1e0e0"];
         self.lineV.alpha = 0.7;
         [self.contentView addSubview:self.lineV];
     }

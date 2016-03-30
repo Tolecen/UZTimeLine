@@ -403,7 +403,7 @@
 //            }
 //        }
         //----------------------------------------------------------------------------------------//
-        
+        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
         [self.imageBrowser dismissViewControllerAnimated:YES completion:^{
             
         }];
