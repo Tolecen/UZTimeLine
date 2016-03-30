@@ -19,4 +19,5 @@
 @property (nonatomic,strong)ArticleModel * article;
 
 @property (nonatomic,copy)void(^imageClicked) (NSInteger cellIndex, int clickedImgIndex, NSArray * imgArray);
+@property (nonatomic,copy)void(^shareBtnClicked) (NSInteger cellIndex, NSArray * imgArray, NSString * content);
 @end

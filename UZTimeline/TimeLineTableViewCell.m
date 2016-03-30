@@ -63,6 +63,7 @@
         [self.friendCircleBtn setFrame:CGRectMake(kScreenWidth-15-40-5, CGRectGetMaxY(self.imgBGV.frame), 40, 40)];
         [self.friendCircleBtn setBackgroundImage:[UIImage imageNamed:@"share_share"] forState:UIControlStateNormal];
         [self.contentView addSubview:self.friendCircleBtn];
+        [self.friendCircleBtn addTarget:self action:@selector(shareBtnAction) forControlEvents:UIControlEventTouchUpInside];
         
         self.lineV = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth, 1)];
         self.lineV.backgroundColor = [UIColor colorWithHexString:@"e1e0e0"];
@@ -151,6 +152,12 @@
 //    NSLog(@"%ld,",(long)u.tag);
     if (self.imageClicked) {
         self.imageClicked(self.cellIndex,(int)u.tag-1,self.article.files);
+    }
+}
+-(void)shareBtnAction
+{
+    if (self.shareBtnClicked) {
+        self.shareBtnClicked(self.cellIndex,self.article.files,self.article.topic_intro);
     }
 }
 

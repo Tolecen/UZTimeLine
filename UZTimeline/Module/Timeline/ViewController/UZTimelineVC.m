@@ -17,6 +17,9 @@
 #import "ACImageBrowser.h"
 #import "SettingViewController.h"
 #import "MJRefresh.h"
+#import "SDWebImageDownloader.h"
+#import "AssetsLibrary/AssetsLibrary.h"
+
 @interface UZTimelineVC()<UITableViewDelegate,UITableViewDataSource,ACImageBrowserDelegate>
 {
     int pageIndex;
@@ -164,6 +167,9 @@
     hcell.imageClicked = ^(NSInteger cellIndex, int clickedImgIndex, NSArray * imgArray){
         [self clickedPicIndex:clickedImgIndex withArray:imgArray];
     };
+    hcell.shareBtnClicked = ^(NSInteger cellIndex, NSArray * imgArray, NSString * content){
+        [self shareBtnToDoWithImgArray:imgArray content:content];
+    };
     return hcell;
 }
 
@@ -274,6 +280,59 @@
     nc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:nc animated:YES completion:nil];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+}
+
+-(void)shareBtnToDoWithImgArray:(NSArray *)imgArray content:(NSString *)content
+{
+    
+    NSMutableArray * iArray = [NSMutableArray array];
+    __block int i = 0;
+    [NSString stringWithFormat:@"一键复制\n下载原图1/%d...",(int)imgArray.count];
+    for (NSDictionary * picDict  in imgArray) {
+        NSString * imgKey = picDict[@"key"];
+        NSString * imgUrl = [NSString stringWithFormat:@"%@%@",UZAPIAppImgBaseURLString,imgKey];
+        NSURL *url = [NSURL URLWithString:imgUrl];
+        [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:url options:SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+            
+        } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
+            [iArray addObject:image];
+            i++;
+            [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"一键复制\n下载原图%d/%d...",i+1,(int)imgArray.count]];
+            if (i==imgArray.count) {
+                [SVProgressHUD showWithStatus:@"保存图片..."];
+                [self saveImageWithImgArray:iArray content:content];
+            }
+        }];
+    }
+}
+-(void)saveImageWithImgArray:(NSMutableArray *)array content:(NSString *)content
+{
+    __block int i = 0;
+    for (UIImage * image in array) {
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        // Request to save the image to camera roll
+        [library
+         writeImageToSavedPhotosAlbum:[image CGImage]
+         orientation:(ALAssetOrientation)image.imageOrientation
+         completionBlock:^(NSURL *assetURL, NSError *error){
+             if (!error) {
+                 i++;
+                 if (i==array.count) {
+                     [SVProgressHUD dismiss];
+                     [self shareToFriendCircleWithContent:content];
+                 }
+             }
+             else {
+                 
+             }
+         }];
+    }
+    
+}
+
+-(void)shareToFriendCircleWithContent:(NSString *)content
+{
+    
 }
 -(void)dismissAtIndex:(NSInteger)index
 {
