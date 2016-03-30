@@ -10,6 +10,7 @@
 #import "FWUtility.h"
 
 static const CGFloat kUZDefaultTimeoutInterval = 15.f;
+NSString *const kUZSuccessDataCode  = @"0";
 
 #ifdef DEBUG
 NSString *const UZAPIAppServerBaseURLString = @"http://120.24.16.64:9080/maguanjia";
@@ -166,7 +167,7 @@ NSString *const HK_QNUPLOAD_FILE    = @"http://upload.qiniu.com";
         return success_valid;
     }
     NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
-    if ([code isEqualToString:@"0"]) {
+    if ([code isEqualToString:kUZSuccessDataCode]) {
         success_valid = YES;
         return success_valid;
     }
