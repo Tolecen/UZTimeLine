@@ -74,12 +74,12 @@
                   moduleName = "UZTimeline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Login/ViewController/UZLoginVC.m"
-                  timestampString = "481015913.222162"
+                  timestampString = "481026361.268329"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "815">
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
+                  offsetFromSymbolStart = "980">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -89,11 +89,11 @@
                   moduleName = "UZTimeline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Login/ViewController/UZLoginVC.m"
-                  timestampString = "481015913.222319"
+                  timestampString = "481026361.268472"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
+                  startingLineNumber = "103"
+                  endingLineNumber = "103"
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
@@ -154,11 +154,11 @@
                   moduleName = "UZTimeline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Timeline/ViewController/UZTimelineVC.m"
-                  timestampString = "481015913.224432"
+                  timestampString = "481026361.270425"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
+                  startingLineNumber = "221"
+                  endingLineNumber = "221"
                   offsetFromSymbolStart = "398">
                </Location>
                <Location
@@ -169,11 +169,11 @@
                   moduleName = "UZTimeline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Timeline/ViewController/UZTimelineVC.m"
-                  timestampString = "481015913.224581"
+                  timestampString = "481026361.270562"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "171"
-                  endingLineNumber = "171"
+                  startingLineNumber = "221"
+                  endingLineNumber = "221"
                   offsetFromSymbolStart = "39">
                </Location>
             </Locations>

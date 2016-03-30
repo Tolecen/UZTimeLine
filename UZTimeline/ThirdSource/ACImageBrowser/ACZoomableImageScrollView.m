@@ -169,6 +169,24 @@
     else if (overHeight && !overWidth) {
         fitSize.height = self.bounds.size.height;
     }
+    else if(!overWidth && !overHeight){
+        if (imageWidth>imageHeight) {
+            fitSize.width = self.bounds.size.width;
+            fitSize.height = self.bounds.size.width/(imageWidth/imageHeight);
+        }
+        else{
+            fitSize.height = self.bounds.size.height;
+            fitSize.width = self.bounds.size.height*(imageWidth/imageHeight);
+            
+            if (fitSize.width>self.bounds.size.width) {
+                CGFloat timesThanFrameWidth = (imageWidth / self.bounds.size.width);
+                scale_max =  timesThanFrameWidth * ACZISV_zoom_bigger;
+                fitSize.width = self.bounds.size.width;
+                fitSize.height = imageHeight / timesThanFrameWidth;
+
+            }
+        }
+    }
     
     self.imageView.frame = CGRectMake((center.x - fitSize.width / 2),
                                       (center.y - fitSize.height / 2),

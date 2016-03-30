@@ -78,7 +78,7 @@
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     NSDictionary *attributes = @{NSFontAttributeName:self.contentLabel.font, NSParagraphStyleAttributeName:paragraphStyle.copy};
-    CGSize nameSize = [self.article.topic_intro boundingRectWithSize:CGSizeMake(self.contentLabel.frame.size.width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+    CGSize nameSize = [self.article.topic_intro boundingRectWithSize:CGSizeMake(kScreenWidth-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     self.contentLabel.text = self.article.topic_intro;
     self.contentLabel.frame = CGRectMake(self.contentLabel.frame.origin.x, self.contentLabel.frame.origin.y, nameSize.width, nameSize.height);
     
