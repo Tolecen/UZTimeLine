@@ -8,7 +8,7 @@
 
 #import "UZAppUserManager.h"
 #import "LZKeychain.h"
-
+#import "SFHFKeychainUtils.h"
 NSString *const UZSaveUserKeyChainKey   = @"UZSaveUserKeyChainKey";
 
 @implementation UZAppUserManager
@@ -30,11 +30,16 @@ NSString *const UZSaveUserKeyChainKey   = @"UZSaveUserKeyChainKey";
 }
 
 + (BOOL)isLogin {
-    id user = [UZAppUserManager currentUser];
-    if (!user) {
+    NSString * userid = [SFHFKeychainUtils getPasswordForUsername:UZUserId andServiceName:UZTimeLineSeivice error:nil];
+    if (!userid) {
         return NO;
     }
     return YES;
+}
+
++(NSString *)getUserId
+{
+    return [SFHFKeychainUtils getPasswordForUsername:UZUserId andServiceName:UZTimeLineSeivice error:nil];
 }
 
 @end

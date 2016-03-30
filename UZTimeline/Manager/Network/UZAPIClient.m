@@ -13,11 +13,13 @@ static const CGFloat kUZDefaultTimeoutInterval = 15.f;
 NSString *const kUZSuccessDataCode  = @"0";
 
 #ifdef DEBUG
-NSString *const UZAPIAppServerBaseURLString = @"http://120.24.16.64:9080/maguanjia";
+NSString *const UZAPIAppServerBaseURLString = @"http://ningweb.com/product_picture/api/index.php/nightkiss/";
 NSString *const UZAPIUploadServerBaseURLString = @"http://m.ririzhuan.com";
+NSString *const UZAPIAppImgBaseURLString = @"http://image.mengbaopai.com/";
 #else
-NSString *const UZAPIAppServerBaseURLString = @"http://120.24.16.64:9080/maguanjia";
+NSString *const UZAPIAppServerBaseURLString = @"http://ningweb.com/product_picture/api/index.php/nightkiss/";
 NSString *const UZAPIUploadServerBaseURLString = @"http://m.ririzhuan.com";
+NSString *const UZAPIAppImgBaseURLString = @"http://image.mengbaopai.com/";
 #endif
 
 NSString *const HK_QNTOKEN   = @"HK_QNTOKEN";
@@ -43,6 +45,7 @@ NSString *const HK_QNUPLOAD_FILE    = @"http://upload.qiniu.com";
         return clients[server];
     } else {
         UZAPIClient *client = [[UZAPIClient alloc] initWithBaseURL:[NSURL URLWithString:server]];
+        
         clients[server] = client;
         return client;
     }
@@ -55,7 +58,7 @@ NSString *const HK_QNUPLOAD_FILE    = @"http://upload.qiniu.com";
 - (instancetype)initWithBaseURL:(NSURL *)url {
     if (self = [super initWithBaseURL:url]) {
         self.responseSerializer = [AFJSONResponseSerializer serializer];
-        self.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.requestSerializer = [AFHTTPRequestSerializer serializer];
         self.requestSerializer.timeoutInterval = kUZDefaultTimeoutInterval;
         NSSet *acceptableContentTypes = [self.responseSerializer acceptableContentTypes];
         acceptableContentTypes = [acceptableContentTypes setByAddingObjectsFromArray:@[@"text/plain",@"text/html"]];
@@ -67,16 +70,17 @@ NSString *const HK_QNUPLOAD_FILE    = @"http://upload.qiniu.com";
 #pragma mark -- Post
 
 - (NSString *)inner_CreatRelativePathWithRequestPath:(NSString *)path {
-    return [NSString stringWithFormat:@"client?m=%@",path];
+    return [NSString stringWithFormat:@"%@",path];
 }
 
 - (NSDictionary *)inner_AdditionDefaultParameters:(NSDictionary *)paramters {
-    if (!paramters) {
-        return [self commonParams].copy;
-    }
-    NSMutableDictionary *params = [self commonParams];
-    params[@"params"] = paramters;
-    return params.copy;
+//    if (!paramters) {
+//        return [self commonParams].copy;
+//    }
+//    NSMutableDictionary *params = [self commonParams];
+//    params[@"params"] = paramters;
+//    return params.copy;
+    return paramters;
 }
 
 - (NSMutableDictionary *)commonParams {
@@ -166,7 +170,7 @@ NSString *const HK_QNUPLOAD_FILE    = @"http://upload.qiniu.com";
     if (!responseObject || ![responseObject isKindOfClass:[NSDictionary class]]) {
         return success_valid;
     }
-    NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+    NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"error"]];
     if ([code isEqualToString:kUZSuccessDataCode]) {
         success_valid = YES;
         return success_valid;
@@ -177,7 +181,7 @@ NSString *const HK_QNUPLOAD_FILE    = @"http://upload.qiniu.com";
 - (NSError *)inner_ConfigureErrorWithInvalidResponseObject:(id)responseObject {
     NSError *error = [NSError errorWithDomain:UZAPIErrorDomain
                                          code:UZAPIErrorCode_APIError
-                                     userInfo:@{NSLocalizedDescriptionKey : @""}];
+                                     userInfo:@{@"message" : responseObject[@"message"]}];
     return error;
 }
 

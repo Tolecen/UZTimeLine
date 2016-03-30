@@ -9,5 +9,5 @@
 #import "UZBaseVC.h"
 
 @interface UZLoginVC : UZBaseVC
-
+@property (nonatomic,copy)void(^loginSuccess) ();
 @end

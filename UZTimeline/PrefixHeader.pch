@@ -1,0 +1,31 @@
+//
+//  PrefixHeader.pch
+//  UZTimeline
+//
+//  Created by TaoXinle on 16/3/30.
+//  Copyright © 2016年 cn.com.uzero. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "UIColor+YYAdd.h"
+
+#endif
+
+
+#define UZTimeLineSeivice  @"uztimeline20160330s67gBv"
+#define UZAccount   @"uztimeline20160330s67gBv_account"
+#define UZPWD   @"uztimeline20160330s67gBv_PWD"
+#define UZUserId   @"uztimeline20160330s67gBv_userid"
+
+#define kScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+#endif /* PrefixHeader_pch */

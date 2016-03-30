@@ -18,4 +18,5 @@
 
 + (BOOL)isLogin;
 
++(NSString *)getUserId;
 @end
