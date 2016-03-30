@@ -277,7 +277,7 @@
 }
 -(void)dismissAtIndex:(NSInteger)index
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    
 }
 
 -(void)toSettingPage

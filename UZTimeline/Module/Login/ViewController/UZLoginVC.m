@@ -39,6 +39,10 @@
     [self.view addSubview:accountTF];
     self.accountTF = accountTF;
     
+    if ([SFHFKeychainUtils getPasswordForUsername:UZAccount andServiceName:UZTimeLineSeivice error:nil]) {
+        self.accountTF.text = [SFHFKeychainUtils getPasswordForUsername:UZAccount andServiceName:UZTimeLineSeivice error:nil];
+    }
+    
     UZTextField *passworkTF = [UZTextField createTextFieldWithPlaceholder:@"输入密码"
                                                                 leftImage:@"login_secret_icon"];
     [self.view addSubview:passworkTF];

@@ -87,7 +87,6 @@
                               message:@"确认退出登录吗?"
                            completion:^(NSInteger buttonIndex, NSString *title) {
                                if ([title isEqualToString:@"确定"]) {
-                                   [SFHFKeychainUtils deleteItemForUsername:UZAccount andServiceName:UZTimeLineSeivice error:nil];
                                    [SFHFKeychainUtils deleteItemForUsername:UZPWD andServiceName:UZTimeLineSeivice error:nil];
                                    [SFHFKeychainUtils deleteItemForUsername:UZUserId andServiceName:UZTimeLineSeivice error:nil];
                                    [self.navigationController popToRootViewControllerAnimated:NO];
