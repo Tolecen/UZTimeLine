@@ -42,6 +42,8 @@
                               success:(void (^)(BOOL success))successBlock;
 //****************************************************************************************//
 
+- (void)closeButtonTapped:(UIButton *)sender;
+
 
 //** readonly ******************************************************************************
 @property (nonatomic, assign, readonly) BOOL                isRoating;

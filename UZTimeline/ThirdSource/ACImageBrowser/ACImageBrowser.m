@@ -177,10 +177,10 @@ static NSString *ACImageBrowserCellItemIdentifier               = @"ACImageBrows
 
     if ([self.delegate respondsToSelector:@selector(dismissAtIndex:)]) {
         [self.delegate dismissAtIndex:self.currentPage];
+       
     }
-    else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 #pragma mark - Private

@@ -403,10 +403,13 @@
 //            }
 //        }
         //----------------------------------------------------------------------------------------//
-        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-        [self.imageBrowser dismissViewControllerAnimated:YES completion:^{
-            
-        }];
+//        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+//        [self.imageBrowser dismissViewControllerAnimated:YES completion:^{
+//            
+//        }];
+        
+        [self.imageBrowser closeButtonTapped:nil];
+        
     }
 }
 
