@@ -49,13 +49,13 @@
     pageIndex = 0;
     pageSize = 20;
     
-    self.view.backgroundColor = [UIColor colorWithRed:250 green:250 blue:250 alpha:1];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
     
     
    
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStylePlain];
-    _tableView.backgroundColor = [UIColor colorWithRed:250 green:250 blue:250 alpha:1];
+    _tableView.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -135,7 +135,7 @@
                         bgvH = maxH;
                     }
                 }
-                else if (article.files.count==4){
+                else if (article.files.count==4 || article.files.count==2){
                     float picWidth = (ContentLabelWidth-40-5)/2;
                     bgvH = picWidth*(int)(i/2)+5*(int)(i/2) + picWidth;
                 }

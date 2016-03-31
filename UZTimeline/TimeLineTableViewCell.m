@@ -17,19 +17,19 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
-        self.contentView.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
+        self.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
         
         
-        self.avatarIV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 45, 45)];
+        self.avatarIV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
         self.avatarIV.backgroundColor = [UIColor colorWithHexString:@"e1e0e0"];
         [self.contentView addSubview:self.avatarIV];
         
-        UIImageView * maskV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 45, 45)];
+        UIImageView * maskV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
         [maskV setImage:[UIImage imageNamed:@"avatar_mask"]];
         [self.contentView addSubview:maskV];
         
-        self.nameL = [[UILabel alloc] initWithFrame:CGRectMake(65, 10, 200, 20)];
+        self.nameL = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 200, 20)];
         self.nameL.numberOfLines = 0;
         self.nameL.lineBreakMode = NSLineBreakByCharWrapping;
         self.nameL.backgroundColor = [UIColor clearColor];
@@ -38,7 +38,7 @@
         self.nameL.text = @"大球和小球";
         [self.contentView addSubview:self.nameL];
         
-        self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 35, ContentLabelWidth, 20)];
+        self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 35, ContentLabelWidth, 20)];
         self.contentLabel.numberOfLines = 0;
         self.contentLabel.lineBreakMode = NSLineBreakByCharWrapping;
         self.contentLabel.backgroundColor = [UIColor clearColor];
@@ -52,7 +52,7 @@
         
         float picWidth = (ContentLabelWidth-30-10)/3;
         
-        self.imgBGV = [[UIView alloc] initWithFrame:CGRectMake(65, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth-65, picWidth*3+20)];
+        self.imgBGV = [[UIView alloc] initWithFrame:CGRectMake(60, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth-60, picWidth*3+20)];
         self.imgBGV.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.imgBGV];
         
@@ -136,7 +136,7 @@
                     }
                 }
             }
-            else if(self.article.files.count==4){
+            else if(self.article.files.count==4 || self.article.files.count==2){
                 float picWidth = (ContentLabelWidth-40-5)/2;
                 [imgv setFrame:CGRectMake(0+5*(i%2-1+1)+picWidth*(i%2), picWidth*(int)(i/2)+5*(int)(i/2), picWidth, picWidth)];
                 NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/sq/180",UZAPIAppImgBaseURLString,imgKey];
@@ -166,7 +166,7 @@
         
     }
     
-    [self.imgBGV setFrame:CGRectMake(65, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth-65, bgvH)];
+    [self.imgBGV setFrame:CGRectMake(60, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth-65, bgvH)];
 //    [self.timeLabel setFrame:CGRectMake(15, CGRectGetMaxY(self.imgBGV.frame)+8, 200, 20)];
 //    [self.timeLabel  setText:[Common dynamicMessageTime:self.article.created_time]];
     [self.friendCircleBtn setFrame:CGRectMake(kScreenWidth-10-40, CGRectGetMaxY(self.imgBGV.frame)-5, 40, 40)];

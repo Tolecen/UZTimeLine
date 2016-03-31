@@ -36,7 +36,7 @@
 }
 
 - (void)inner_AppStartUp {
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"0x3ED0F3"]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"2dd3f6"]];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.f], NSForegroundColorAttributeName: [UIColor whiteColor]}];
     
