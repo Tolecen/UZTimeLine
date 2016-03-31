@@ -58,8 +58,8 @@
     self.zoomableImageScrollView.imageURLString = nil;
     self.zoomableImageScrollView.imageView.image = nil;
     self.zoomableImageScrollView.progressView.progress = 0.0;
-    self.zoomableImageScrollView.progressView.alpha = 0.0;
-    self.zoomableImageScrollView.progressView.hidden = YES;
+    self.zoomableImageScrollView.progressView.alpha = 1.0;
+    self.zoomableImageScrollView.progressView.hidden = NO;
     self.zoomableImageScrollView.isLoaded = NO;
 }
 

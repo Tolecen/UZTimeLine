@@ -91,6 +91,7 @@
          options:SDWebImageRetryFailed | SDWebImageContinueInBackground
          progress:^(NSInteger receivedSize, NSInteger expectedSize) {
              __strong __typeof(weakSelf)strongSelf = weakSelf;
+             NSLog(@"viewHIdden:%d,Frame:%@,isExsit:%@",strongSelf.progressView.hidden,NSStringFromCGRect(strongSelf.progressView.frame),[strongSelf superview]);
              strongSelf.progressView.alpha = 1.0;
              strongSelf.progressView.hidden = NO;
              strongSelf.progressView.progress = 0.0;
