@@ -136,6 +136,12 @@
                     }
                 }
             }
+            else if(self.article.files.count==4){
+                float picWidth = (ContentLabelWidth-40-5)/2;
+                [imgv setFrame:CGRectMake(0+5*(i%2-1+1)+picWidth*(i%2), picWidth*(int)(i/2)+5*(int)(i/2), picWidth, picWidth)];
+                NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/sq/180",UZAPIAppImgBaseURLString,imgKey];
+                [imgv sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
+            }
             else
             {
                 float picWidth = (ContentLabelWidth-30-10)/3;
