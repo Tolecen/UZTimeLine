@@ -342,7 +342,7 @@
     UIPasteboard *pasteboard=[UIPasteboard generalPasteboard];
     pasteboard.string = content;
     
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"打开微信" message:@"全部图片已保存到相册，文字已复制到剪贴板！请打开微信到朋友圈粘贴文字和上传图片" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开微信", nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"发布到微信" message:@"全部图片已保存到相册，文字已复制到剪贴板！请打开微信到朋友圈粘贴文字和上传图片" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开微信", nil];
     [alert show];
 
 }
