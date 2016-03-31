@@ -20,7 +20,25 @@
         self.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
         self.contentView.backgroundColor = [UIColor colorWithHexString:@"f9f9f9"];
         
-        self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, kScreenWidth-30, 20)];
+        
+        self.avatarIV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 45, 45)];
+        self.avatarIV.backgroundColor = [UIColor colorWithHexString:@"e1e0e0"];
+        [self.contentView addSubview:self.avatarIV];
+        
+        UIImageView * maskV = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 45, 45)];
+        [maskV setImage:[UIImage imageNamed:@"avatar_mask"]];
+        [self.contentView addSubview:maskV];
+        
+        self.nameL = [[UILabel alloc] initWithFrame:CGRectMake(65, 10, 200, 20)];
+        self.nameL.numberOfLines = 0;
+        self.nameL.lineBreakMode = NSLineBreakByCharWrapping;
+        self.nameL.backgroundColor = [UIColor clearColor];
+        self.nameL.textColor = [UIColor colorWithHexString:@"20b3ff"];
+        self.nameL.font = [UIFont systemFontOfSize:15];
+        self.nameL.text = @"大球和小球";
+        [self.contentView addSubview:self.nameL];
+        
+        self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 35, ContentLabelWidth, 20)];
         self.contentLabel.numberOfLines = 0;
         self.contentLabel.lineBreakMode = NSLineBreakByCharWrapping;
         self.contentLabel.backgroundColor = [UIColor clearColor];
@@ -32,14 +50,14 @@
         
         
         
-        float picWidth = (kScreenWidth-30-30-20)/3;
+        float picWidth = (ContentLabelWidth-30-10)/3;
         
-        self.imgBGV = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth, picWidth*3+20)];
+        self.imgBGV = [[UIView alloc] initWithFrame:CGRectMake(65, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth-65, picWidth*3+20)];
         self.imgBGV.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:self.imgBGV];
         
         for (int i = 0; i<9; i++) {
-            UIImageView * imgv = [[UIImageView alloc] initWithFrame:CGRectMake(15+10*(i%3-1+1)+picWidth*(i%3), picWidth*(int)(i/3)+10*(int)(i/3), picWidth, picWidth)];
+            UIImageView * imgv = [[UIImageView alloc] initWithFrame:CGRectMake(0+5*(i%3-1+1)+picWidth*(i%3), picWidth*(int)(i/3)+5*(int)(i/3), picWidth, picWidth)];
             imgv.userInteractionEnabled = YES;
             imgv.backgroundColor = [UIColor colorWithHexString:@"e1e0e0"];
             imgv.tag = i+1;
@@ -50,13 +68,13 @@
         }
         
         
-        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, CGRectGetMaxY(self.imgBGV.frame)+8, 200, 20)];
-        self.timeLabel.lineBreakMode = NSLineBreakByCharWrapping;
-        self.timeLabel.backgroundColor = [UIColor clearColor];
-        self.timeLabel.textColor = [UIColor colorWithHexString:@"adafaf"];
-        self.timeLabel.font = [UIFont systemFontOfSize:12];
-        self.timeLabel.text = @"0000-0000";
-        [self.contentView addSubview:self.timeLabel];
+//        self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, CGRectGetMaxY(self.imgBGV.frame)+8, 200, 20)];
+//        self.timeLabel.lineBreakMode = NSLineBreakByCharWrapping;
+//        self.timeLabel.backgroundColor = [UIColor clearColor];
+//        self.timeLabel.textColor = [UIColor colorWithHexString:@"adafaf"];
+//        self.timeLabel.font = [UIFont systemFontOfSize:12];
+//        self.timeLabel.text = @"0000-0000";
+//        [self.contentView addSubview:self.timeLabel];
         
         
         self.friendCircleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -76,10 +94,13 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    [self.avatarIV sd_setImageWithURL:[NSURL URLWithString:@"http://www.th7.cn/d/file/p/2016/03/13/8a10ce373a93c006f365840a5b2af28c.jpg"] placeholderImage:nil];
+    
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
     NSDictionary *attributes = @{NSFontAttributeName:self.contentLabel.font, NSParagraphStyleAttributeName:paragraphStyle.copy};
-    CGSize nameSize = [self.article.topic_intro boundingRectWithSize:CGSizeMake(kScreenWidth-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+    CGSize nameSize = [self.article.topic_intro boundingRectWithSize:CGSizeMake(ContentLabelWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     self.contentLabel.text = self.article.topic_intro;
     self.contentLabel.frame = CGRectMake(self.contentLabel.frame.origin.x, self.contentLabel.frame.origin.y, nameSize.width, nameSize.height);
     
@@ -95,13 +116,13 @@
                 float imgHeight = [picDict[@"height"] floatValue];
                 float ratio = imgWidth/imgHeight;
                 if (ratio>=1) {
-                    [imgv setFrame:CGRectMake(imgv.frame.origin.x, imgv.frame.origin.y, kScreenWidth-30-50, (kScreenWidth-30-50)/ratio)];
-                    NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fw/%d",UZAPIAppImgBaseURLString,imgKey,(int)(kScreenWidth-30-50)];
+                    [imgv setFrame:CGRectMake(imgv.frame.origin.x, imgv.frame.origin.y, ContentLabelWidth-50, (ContentLabelWidth-50)/ratio)];
+                    NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fw/%d",UZAPIAppImgBaseURLString,imgKey,(int)(ContentLabelWidth-50)];
                     [imgv sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
                 }
                 else
                 {
-                    float maxH = kScreenWidth-30-100;
+                    float maxH = ContentLabelWidth-100;
                     if (ratio>=0.2) {
                         [imgv setFrame:CGRectMake(imgv.frame.origin.x, imgv.frame.origin.y, maxH*ratio,maxH)];
                         NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fh/%d",UZAPIAppImgBaseURLString,imgKey,(int)maxH];
@@ -117,8 +138,8 @@
             }
             else
             {
-                float picWidth = (kScreenWidth-30-30-20)/3;
-                [imgv setFrame:CGRectMake(15+10*(i%3-1+1)+picWidth*(i%3), picWidth*(int)(i/3)+10*(int)(i/3), picWidth, picWidth)];
+                float picWidth = (ContentLabelWidth-30-10)/3;
+                [imgv setFrame:CGRectMake(0+5*(i%3-1+1)+picWidth*(i%3), picWidth*(int)(i/3)+5*(int)(i/3), picWidth, picWidth)];
                 NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/sq/150",UZAPIAppImgBaseURLString,imgKey];
                 [imgv sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
                 
@@ -139,11 +160,11 @@
         
     }
     
-    [self.imgBGV setFrame:CGRectMake(0, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth, bgvH)];
-    [self.timeLabel setFrame:CGRectMake(15, CGRectGetMaxY(self.imgBGV.frame)+8, 200, 20)];
-    [self.timeLabel  setText:[Common dynamicMessageTime:self.article.created_time]];
+    [self.imgBGV setFrame:CGRectMake(65, CGRectGetMaxY(self.contentLabel.frame)+10, kScreenWidth-65, bgvH)];
+//    [self.timeLabel setFrame:CGRectMake(15, CGRectGetMaxY(self.imgBGV.frame)+8, 200, 20)];
+//    [self.timeLabel  setText:[Common dynamicMessageTime:self.article.created_time]];
     [self.friendCircleBtn setFrame:CGRectMake(kScreenWidth-10-40, CGRectGetMaxY(self.imgBGV.frame)-5, 40, 40)];
-    [self.lineV setFrame:CGRectMake(5, CGRectGetMaxY(self.timeLabel.frame)+6, kScreenWidth-10, 1)];
+    [self.lineV setFrame:CGRectMake(5, CGRectGetMaxY(self.imgBGV.frame)+34, kScreenWidth-10, 1)];
 }
 
 -(void)tappedImageV:(UITapGestureRecognizer *)tap

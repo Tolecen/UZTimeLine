@@ -18,7 +18,6 @@
 +(NSDate *)getCurrentTimeFromString:(NSString *)datetime;
 +(NSString *)getCurrentTimeFromString2:(NSDate *)datetime;
 +(NSString *)getWeakDay:(NSDate *)datetime;
-+(NSString *)getmessageTime:(NSDate *)date;
 +(NSString *)getDateStringWithTimestamp:(NSString*)tamp;
 +(NSString *)getExDateStringWithTimestamp:(NSString*)tamp;
 

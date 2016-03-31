@@ -19,8 +19,9 @@
 #import "MJRefresh.h"
 #import "SDWebImageDownloader.h"
 #import "AssetsLibrary/AssetsLibrary.h"
+#import "FWAlertHelper.h"
 
-@interface UZTimelineVC()<UITableViewDelegate,UITableViewDataSource,ACImageBrowserDelegate>
+@interface UZTimelineVC()<UITableViewDelegate,UITableViewDataSource,ACImageBrowserDelegate,UIAlertViewDelegate>
 {
     int pageIndex;
     int pageSize;
@@ -109,12 +110,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_dataArray) {
-        float cH = 15.f;
+        float cH = 35.f;
         ArticleModel * article = _dataArray[indexPath.row];
         NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
         paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;
         NSDictionary *attributes = @{NSFontAttributeName:[UIFont systemFontOfSize:14], NSParagraphStyleAttributeName:paragraphStyle.copy};
-        CGSize nameSize = [article.topic_intro boundingRectWithSize:CGSizeMake(kScreenWidth-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
+        CGSize nameSize = [article.topic_intro boundingRectWithSize:CGSizeMake(ContentLabelWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
         cH = cH + nameSize.height+10+35;
         
         float bgvH = 0.f;
@@ -126,18 +127,18 @@
                     float imgHeight = [picDict[@"height"] floatValue];
                     float ratio = imgWidth/imgHeight;
                     if (ratio>=1) {
-                        bgvH = (kScreenWidth-30-50)/ratio;
+                        bgvH = (ContentLabelWidth-50)/ratio;
                     }
                     else
                     {
-                        float maxH = kScreenWidth-30-100;
+                        float maxH = ContentLabelWidth-100;
                         bgvH = maxH;
                     }
                 }
                 else
                 {
-                    float picWidth = (kScreenWidth-30-30-20)/3;
-                    bgvH = picWidth*(int)(i/3)+10*(int)(i/3) + picWidth;
+                    float picWidth = (ContentLabelWidth-30-10)/3;
+                    bgvH = picWidth*(int)(i/3)+5*(int)(i/3) + picWidth;
                 }
                 
     
@@ -300,7 +301,11 @@
             [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"一键复制\n下载原图%d/%d...",i+1,(int)imgArray.count]];
             if (i==imgArray.count) {
                 [SVProgressHUD showWithStatus:@"保存图片..."];
-                [self saveImageWithImgArray:iArray content:content];
+//                dispatch_async(dispatch_get_main_queue(), ^{
+                     [self saveImageWithImgArray:iArray content:content];
+                    
+//                });
+               
             }
         }];
     }
@@ -319,7 +324,9 @@
                  i++;
                  if (i==array.count) {
                      [SVProgressHUD dismiss];
-                     [self shareToFriendCircleWithContent:content];
+//                     [self shareToFriendCircleWithContent:content];
+                     
+                     [self performSelectorOnMainThread:@selector(shareToFriendCircleWithContent:) withObject:content waitUntilDone:YES];
                  }
              }
              else {
@@ -332,7 +339,12 @@
 
 -(void)shareToFriendCircleWithContent:(NSString *)content
 {
+    UIPasteboard *pasteboard=[UIPasteboard generalPasteboard];
+    pasteboard.string = content;
     
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"打开微信" message:@"全部图片已保存到相册，文字已复制到剪贴板！请打开微信到朋友圈粘贴文字和上传图片" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开微信", nil];
+    [alert show];
+
 }
 -(void)dismissAtIndex:(NSInteger)index
 {
@@ -343,6 +355,13 @@
 {
     SettingViewController * setV = [[SettingViewController alloc] init];
     [self.navigationController pushViewController:setV animated:YES];
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"weixin://"]];
+    }
 }
 
 @end

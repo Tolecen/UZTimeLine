@@ -10,6 +10,8 @@
 #import "ArticleModel.h"
 @interface TimeLineTableViewCell : UITableViewCell
 
+@property (nonatomic,strong)UIImageView * avatarIV;
+@property (nonatomic,strong)UILabel * nameL;
 @property (nonatomic,strong)UILabel * contentLabel;
 @property (nonatomic,strong)UILabel * timeLabel;
 @property (nonatomic,strong)UIButton * friendCircleBtn;
