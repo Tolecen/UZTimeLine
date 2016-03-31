@@ -32,6 +32,7 @@
     if (!_loadingView) {
         UIActivityIndicatorView *loadingView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:self.activityIndicatorViewStyle];
         loadingView.hidesWhenStopped = YES;
+        loadingView.color = MJRefreshLabelTextColor;
         [self addSubview:_loadingView = loadingView];
     }
     return _loadingView;

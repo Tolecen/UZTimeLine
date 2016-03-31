@@ -247,13 +247,14 @@
         
         [_tableView reloadData];
         [_tableView.mj_header endRefreshing];
-        [_tableView.mj_footer endRefreshing];
+        
         if (dataA.count>0) {
             pageIndex++;
+            [_tableView.mj_footer endRefreshing];
         }
         else
         {
-            
+            [_tableView.mj_footer endRefreshingWithNoMoreData];
         }
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

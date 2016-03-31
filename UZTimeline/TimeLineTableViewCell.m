@@ -33,8 +33,8 @@
         self.nameL.numberOfLines = 0;
         self.nameL.lineBreakMode = NSLineBreakByCharWrapping;
         self.nameL.backgroundColor = [UIColor clearColor];
-        self.nameL.textColor = [UIColor colorWithHexString:@"20b3ff"];
-        self.nameL.font = [UIFont systemFontOfSize:15];
+        self.nameL.textColor = [UIColor colorWithHexString:@"1cc1e4"];
+        self.nameL.font = [UIFont boldSystemFontOfSize:15];
         self.nameL.text = @"大球和小球";
         [self.contentView addSubview:self.nameL];
         
