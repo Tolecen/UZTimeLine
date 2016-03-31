@@ -120,6 +120,7 @@
 		D82621CF1CABB10800838ADB /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82621CE1CABB10800838ADB /* SettingViewController.m */; };
 		D86452D31CAD1C7C006742E0 /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D86452D21CAD1C7C006742E0 /* AgreementViewController.m */; };
 		D86452D51CAD1D12006742E0 /* UserAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = D86452D41CAD1D12006742E0 /* UserAgreement.html */; };
+		D86452D81CAD31F7006742E0 /* IdentifyingString.m in Sources */ = {isa = PBXBuildFile; fileRef = D86452D71CAD31F7006742E0 /* IdentifyingString.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -357,6 +358,8 @@
 		D86452D11CAD1C7C006742E0 /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
 		D86452D21CAD1C7C006742E0 /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
 		D86452D41CAD1D12006742E0 /* UserAgreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = UserAgreement.html; sourceTree = "<group>"; };
+		D86452D61CAD31F7006742E0 /* IdentifyingString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyingString.h; sourceTree = "<group>"; };
+		D86452D71CAD31F7006742E0 /* IdentifyingString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyingString.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -880,6 +883,8 @@
 				0695375F1CA77B010068204F /* FWUtility.m */,
 				D82621791CABA06F00838ADB /* Common.h */,
 				D826217A1CABA06F00838ADB /* Common.m */,
+				D86452D61CAD31F7006742E0 /* IdentifyingString.h */,
+				D86452D71CAD31F7006742E0 /* IdentifyingString.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1162,6 +1167,7 @@
 				069536DC1CA776EA0068204F /* MJRefreshHeader.m in Sources */,
 				069536E51CA776EA0068204F /* MJRefreshStateHeader.m in Sources */,
 				0695360E1CA770760068204F /* main.m in Sources */,
+				D86452D81CAD31F7006742E0 /* IdentifyingString.m in Sources */,
 				0695378B1CA7876E0068204F /* UIDevice+YYAdd.m in Sources */,
 				069537871CA7876E0068204F /* NSDate+YYAdd.m in Sources */,
 				069537861CA7876E0068204F /* NSData+YYAdd.m in Sources */,

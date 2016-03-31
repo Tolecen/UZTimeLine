@@ -21,4 +21,6 @@
 +(NSString *)getDateStringWithTimestamp:(NSString*)tamp;
 +(NSString *)getExDateStringWithTimestamp:(NSString*)tamp;
 
++(NSString *)md5Str:(NSString *)str;
+
 @end

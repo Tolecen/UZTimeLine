@@ -14,7 +14,7 @@
 #import "UZAPIClient.h"
 #import "SFHFKeychainUtils.h"
 #import "SVProgressHUD.h"
-#import <CommonCrypto/CommonDigest.h>
+#import "Common.h"
 #import "AgreementViewController.h"
 
 @interface UZLoginVC()<UITextFieldDelegate>
@@ -141,7 +141,7 @@
     [self.accountTF resignFirstResponder];
     [self.passworkTF resignFirstResponder];
     [SVProgressHUD showWithStatus:@"登录中..."];
-    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:self.accountTF.text,@"username",[self md5Str:self.passworkTF.text],@"passwd", nil];
+    NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:self.accountTF.text,@"username",[Common md5Str:self.passworkTF.text],@"passwd", nil];
     [[UZAPIClient sharedClient] postDefaultClientWithURLPath:@"userLogin" parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary * uinfo = responseObject[@"data"];
         [SFHFKeychainUtils storeUsername:UZAccount andPassword:uinfo[@"username"] forServiceName:UZTimeLineSeivice updateExisting:YES error:nil];
@@ -163,6 +163,11 @@
 
 - (void)inner_RegisteAction:(UIButton *)sender {
     UZRegisterVC *regiserVC = [[UZRegisterVC alloc] init];
+    regiserVC.regSuccess = ^(){
+        if (self.loginSuccess) {
+            self.loginSuccess();
+        }
+    };
     [self.navigationController pushViewController:regiserVC animated:YES];
 }
 
@@ -179,19 +184,6 @@
     [self.view endEditing:YES];
 }
 
--(NSString *)md5Str:(NSString *)str
-{
-    const char *cStr = [str UTF8String];
-    unsigned char md[CC_MD5_DIGEST_LENGTH];
-    size_t len = strlen(cStr);
-    CC_MD5(cStr, (unsigned int)len, md);
-    return [NSString stringWithFormat:
-            @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
-            md[0], md[1], md[2], md[3],
-            md[4], md[5], md[6], md[7],
-            md[8], md[9], md[10], md[11],
-            md[12], md[13], md[14], md[15]
-            ];
-}
+
 
 @end

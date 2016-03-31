@@ -9,5 +9,5 @@
 #import "UZBaseVC.h"
 
 @interface UZRegisterVC : UZBaseVC
-
+@property (nonatomic,copy)void(^regSuccess) ();
 @end
