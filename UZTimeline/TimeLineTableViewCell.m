@@ -118,7 +118,7 @@
                 float ratio = imgWidth/imgHeight;
                 if (ratio>=1) {
                     [imgv setFrame:CGRectMake(imgv.frame.origin.x, imgv.frame.origin.y, ContentLabelWidth-50, (ContentLabelWidth-50)/ratio)];
-                    NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fw/%d",UZAPIAppImgBaseURLString,imgKey,(int)(ContentLabelWidth-50)];
+                    NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fw/%d",UZAPIAppImgBaseURLString,imgKey,(int)kScreenWidth];
                     [imgv sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
                 }
                 else
@@ -126,13 +126,13 @@
                     float maxH = ContentLabelWidth-100;
                     if (ratio>=0.2) {
                         [imgv setFrame:CGRectMake(imgv.frame.origin.x, imgv.frame.origin.y, maxH*ratio,maxH)];
-                        NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fh/%d",UZAPIAppImgBaseURLString,imgKey,(int)maxH];
+                        NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fh/%d",UZAPIAppImgBaseURLString,imgKey,(int)kScreenWidth];
                         [imgv sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
                     }
                     else
                     {
                         [imgv setFrame:CGRectMake(imgv.frame.origin.x, imgv.frame.origin.y, maxH*0.2,maxH)];
-                        NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fwfh/%dx%d",UZAPIAppImgBaseURLString,imgKey,(int)(maxH*0.2),(int)maxH];
+                        NSString * imgUrl = [NSString stringWithFormat:@"%@%@_/fwfh/%dx%d",UZAPIAppImgBaseURLString,imgKey,(int)(kScreenWidth*0.2),(int)kScreenWidth];
                         [imgv sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:nil];
                     }
                 }
