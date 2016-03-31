@@ -288,7 +288,7 @@
     
     NSMutableArray * iArray = [NSMutableArray array];
     __block int i = 0;
-    [NSString stringWithFormat:@"一键复制\n下载原图1/%d...",(int)imgArray.count];
+    [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"下载原图1/%d...",(int)imgArray.count]];
     for (NSDictionary * picDict  in imgArray) {
         NSString * imgKey = picDict[@"key"];
         NSString * imgUrl = [NSString stringWithFormat:@"%@%@",UZAPIAppImgBaseURLString,imgKey];
@@ -298,7 +298,7 @@
         } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
             [iArray addObject:image];
             i++;
-            [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"一键复制\n下载原图%d/%d...",i+1,(int)imgArray.count]];
+            [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"下载原图%d/%d...",i+1,(int)imgArray.count]];
             if (i==imgArray.count) {
                 [SVProgressHUD showWithStatus:@"保存图片..."];
 //                dispatch_async(dispatch_get_main_queue(), ^{
@@ -360,7 +360,7 @@
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex==1) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"weixin://"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"weixin://dl/moments"]];
     }
 }
 
