@@ -9,5 +9,10 @@
 #import "ArticleModel.h"
 
 @implementation ArticleModel
-
++ (JSONKeyMapper *)keyMapper
+{
+    NSDictionary *dic = @{@"author.file.key":@"avatarUrl",
+                          @"author.nickname":@"userNickname"};
+    return [[JSONKeyMapper alloc] initWithDictionary:dic];
+}
 @end

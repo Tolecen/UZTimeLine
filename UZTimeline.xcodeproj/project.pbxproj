@@ -118,6 +118,8 @@
 		D82621C91CABA3DA00838ADB /* SDBaseProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D82621C61CABA3DA00838ADB /* SDBaseProgressView.m */; };
 		D82621CA1CABA3DA00838ADB /* SDPieLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D82621C81CABA3DA00838ADB /* SDPieLoopProgressView.m */; };
 		D82621CF1CABB10800838ADB /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82621CE1CABB10800838ADB /* SettingViewController.m */; };
+		D86452D31CAD1C7C006742E0 /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D86452D21CAD1C7C006742E0 /* AgreementViewController.m */; };
+		D86452D51CAD1D12006742E0 /* UserAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = D86452D41CAD1D12006742E0 /* UserAgreement.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -352,6 +354,9 @@
 		D82621CD1CABB10800838ADB /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		D82621CE1CABB10800838ADB /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		D8391D6A1CAB652D00ABA5AC /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		D86452D11CAD1C7C006742E0 /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
+		D86452D21CAD1C7C006742E0 /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
+		D86452D41CAD1D12006742E0 /* UserAgreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = UserAgreement.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +400,7 @@
 				0695360F1CA770760068204F /* AppDelegate.h */,
 				069536101CA770760068204F /* AppDelegate.m */,
 				069536181CA770760068204F /* Assets.xcassets */,
+				D86452D41CAD1D12006742E0 /* UserAgreement.html */,
 				0695361D1CA770760068204F /* Info.plist */,
 				0695360C1CA770760068204F /* Supporting Files */,
 			);
@@ -771,6 +777,8 @@
 		069537161CA7788E0068204F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D86452D11CAD1C7C006742E0 /* AgreementViewController.h */,
+				D86452D21CAD1C7C006742E0 /* AgreementViewController.m */,
 				069537231CA779BC0068204F /* UZLoginVC.h */,
 				069537241CA779BC0068204F /* UZLoginVC.m */,
 				069537261CA779C70068204F /* UZRegisterVC.h */,
@@ -1051,6 +1059,7 @@
 				D82621B21CABA3CD00838ADB /* error_x@2x.png in Resources */,
 				D82621B11CABA3CD00838ADB /* error_x.png in Resources */,
 				0695376A1CA77CD20068204F /* MBProgressHUD.bundle in Resources */,
+				D86452D51CAD1D12006742E0 /* UserAgreement.html in Resources */,
 				D82621711CAB774600838ADB /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1137,6 +1146,7 @@
 				069536C41CA776EA0068204F /* AFURLSessionManager.m in Sources */,
 				069536EA1CA776EA0068204F /* UIView+MJExtension.m in Sources */,
 				069536CD1CA776EA0068204F /* SFHFKeychainUtils.m in Sources */,
+				D86452D31CAD1C7C006742E0 /* AgreementViewController.m in Sources */,
 				069537691CA77CD20068204F /* MBProgressHUD+MJ.m in Sources */,
 				0695376B1CA77CD20068204F /* MBProgressHUD.m in Sources */,
 				069536C51CA776EA0068204F /* GTMBase64.m in Sources */,

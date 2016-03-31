@@ -42,7 +42,7 @@
     
     UZTimelineVC *viewController = [[UZTimelineVC alloc] init];
     UZNavigationController *navigationController = [[UZNavigationController alloc] initWithRootViewController:viewController];
-    viewController.view.backgroundColor = [UIColor greenColor];
+    viewController.view.backgroundColor = [UIColor blackColor];
     self.rootViewController = navigationController;
 }
 

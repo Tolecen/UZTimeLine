@@ -95,7 +95,8 @@
 {
     [super layoutSubviews];
     
-    [self.avatarIV sd_setImageWithURL:[NSURL URLWithString:@"http://www.th7.cn/d/file/p/2016/03/13/8a10ce373a93c006f365840a5b2af28c.jpg"] placeholderImage:nil];
+    [self.avatarIV sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@_/sq/80",UZAPIAppImgBaseURLString,self.article.avatarUrl]] placeholderImage:nil];
+    self.nameL.text = self.article.userNickname;
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc]init];
     paragraphStyle.lineBreakMode = NSLineBreakByWordWrapping;

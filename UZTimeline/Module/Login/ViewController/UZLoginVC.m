@@ -15,6 +15,7 @@
 #import "SFHFKeychainUtils.h"
 #import "SVProgressHUD.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "AgreementViewController.h"
 
 @interface UZLoginVC()<UITextFieldDelegate>
 
@@ -22,6 +23,7 @@
 @property (nonatomic, weak) UZTextField *passworkTF;
 @property (nonatomic, weak) UIButton *loginBtn;
 @property (nonatomic, weak) UIButton *registeBtn;
+@property (nonatomic, weak) UIButton *privacyBtn;
 
 @end
 
@@ -69,13 +71,35 @@
     [self.view addSubview:loginBtn];
     self.loginBtn = loginBtn;
     
-    UIButton *registeBtn = [UIButton createButtonWithTitle:@"注册"
-                                                    target:self
-                                                    action:@selector(inner_RegisteAction:)];
-    [self.view addSubview:registeBtn];
-    self.registeBtn = registeBtn;
+//    UIButton *registeBtn = [UIButton createButtonWithTitle:@"注册"
+//                                                    target:self
+//                                                    action:@selector(inner_RegisteAction:)];
+//    [self.view addSubview:registeBtn];
+//    self.registeBtn = registeBtn;
     
-    CGFloat width = ([UIScreen mainScreen].bounds.size.width - 60) / 2;
+    UIButton * registBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [registBtn setBackgroundColor:[UIColor clearColor]];
+    [registBtn setTitle:@"注册新用户>" forState:UIControlStateNormal];
+    [registBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    registBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    [registBtn setTitleColor:[UIColor colorWithHexString:@"2dd3f6"] forState:UIControlStateNormal];
+    [registBtn addTarget:self action:@selector(inner_RegisteAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:registBtn];
+    self.registeBtn = registBtn;
+    
+    UIButton * pBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pBtn setBackgroundColor:[UIColor clearColor]];
+    [pBtn setTitle:@"查看《用户使用协议》" forState:UIControlStateNormal];
+    [pBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+    pBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    [pBtn setTitleColor:[UIColor colorWithHexString:@"2dd3f6"] forState:UIControlStateNormal];
+    [pBtn addTarget:self action:@selector(inner_privacyAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:pBtn];
+    self.privacyBtn = pBtn;
+    
+    
+//    CGFloat width = ([UIScreen mainScreen].bounds.size.width - 60) / 2;
+    CGFloat width = [UIScreen mainScreen].bounds.size.width - 40;
     [loginBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.view).offset(20);
         make.top.mas_equalTo(passworkTF.mas_bottom).offset(20);
@@ -83,11 +107,25 @@
         make.height.mas_equalTo(35);
     }];
     
-    [registeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//    [registeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(self.view).offset(-20);
+//        make.top.mas_equalTo(passworkTF.mas_bottom).offset(20);
+//        make.width.mas_equalTo(width);
+//        make.height.mas_equalTo(35);
+//    }];
+    
+    [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(self.view).offset(-20);
-        make.top.mas_equalTo(passworkTF.mas_bottom).offset(20);
-        make.width.mas_equalTo(width);
-        make.height.mas_equalTo(35);
+        make.top.mas_equalTo(loginBtn.mas_bottom).offset(10);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(20);
+    }];
+    
+    [pBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view).offset(20);
+        make.top.mas_equalTo(loginBtn.mas_bottom).offset(10);
+        make.width.mas_equalTo(160);
+        make.height.mas_equalTo(20);
     }];
 }
 
@@ -126,6 +164,15 @@
 - (void)inner_RegisteAction:(UIButton *)sender {
     UZRegisterVC *regiserVC = [[UZRegisterVC alloc] init];
     [self.navigationController pushViewController:regiserVC animated:YES];
+}
+
+-(void)inner_privacyAction:(UIButton *)sender
+{
+    AgreementViewController *_agreementController = [[AgreementViewController alloc] init];
+    [self.navigationController pushViewController:_agreementController animated:YES];
+    
+    [self.accountTF resignFirstResponder];
+    [self.passworkTF resignFirstResponder];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

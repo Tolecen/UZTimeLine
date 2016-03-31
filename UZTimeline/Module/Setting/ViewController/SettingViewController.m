@@ -9,9 +9,12 @@
 #import "SettingViewController.h"
 #import "SFHFKeychainUtils.h"
 #import "FWAlertHelper.h"
+#import "SVProgressHUD.h"
+#import "SDImageCache.h"
 @interface SettingViewController()<UITableViewDelegate,UITableViewDataSource>
 {
     NSString * myAccountName;
+    NSInteger cacheSize;
 }
 @property (nonatomic,strong)UITableView * tableView;
 
@@ -27,6 +30,8 @@
     self.title = @"设置";
     self.view.backgroundColor = [UIColor colorWithHexString:@"efefef"];
     
+    cacheSize = 0;
+    
     myAccountName = [SFHFKeychainUtils getPasswordForUsername:UZAccount andServiceName:UZTimeLineSeivice error:nil];
     
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-64) style:UITableViewStyleGrouped];
@@ -40,7 +45,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -59,9 +64,16 @@
         hcell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
     }
+    hcell.textLabel.font = [UIFont systemFontOfSize:16];
     if (indexPath.section==0) {
         hcell.selectionStyle = UITableViewCellSelectionStyleNone;
         hcell.textLabel.text = [NSString stringWithFormat:@"用户名: %@",myAccountName];
+        hcell.textLabel.textAlignment = NSTextAlignmentLeft;
+        hcell.textLabel.textColor = [UIColor colorWithHexString:@"4c4c4c"];
+    }
+    else if (indexPath.section==1) {
+        hcell.selectionStyle = UITableViewCellSelectionStyleNone;
+        hcell.textLabel.text = [NSString stringWithFormat:@"清除缓存 (约%.2fM)",(double)cacheSize/1024/1024];
         hcell.textLabel.textAlignment = NSTextAlignmentLeft;
         hcell.textLabel.textColor = [UIColor colorWithHexString:@"4c4c4c"];
     }
@@ -83,6 +95,15 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==1) {
+        [SVProgressHUD showWithStatus:@"清理中..."];
+//        [[SDImageCache sharedImageCache] setMaxCacheSize:1];
+        [[SDImageCache sharedImageCache] clearMemory];
+        [[SDImageCache sharedImageCache] cleanDiskManualWithCompletionBlock:^{
+            [SVProgressHUD showSuccessWithStatus:@"清理完成"];
+            [self calCacheSize];
+        }];
+    }
+    else if (indexPath.section==2) {
         [FWAlertHelper alertWithTitle:@"退出登录"
                               message:@"确认退出登录吗?"
                            completion:^(NSInteger buttonIndex, NSString *title) {
@@ -94,6 +115,18 @@
                                }
                            } cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     }
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self calCacheSize];
+}
+
+-(void)calCacheSize
+{
+    cacheSize = [[SDImageCache sharedImageCache] getSize];
+    [self.tableView reloadData];
 }
 
 /*

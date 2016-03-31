@@ -210,6 +210,7 @@ typedef void(^SDWebImageCalculateSizeBlock)(NSUInteger fileCount, NSUInteger tot
  * @param completionBlock An block that should be executed after cache expiration completes (optional)
  */
 - (void)cleanDiskWithCompletionBlock:(SDWebImageNoParamsBlock)completionBlock;
+- (void)cleanDiskManualWithCompletionBlock:(SDWebImageNoParamsBlock)completionBlock;
 
 /**
  * Remove all expired cached image from disk
