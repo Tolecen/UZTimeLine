@@ -141,7 +141,7 @@
                 }
                 else
                 {
-                    float picWidth = (ContentLabelWidth-40-10)/3;
+                    float picWidth = (ContentLabelWidth-30-10)/3;
                     bgvH = picWidth*(int)(i/3)+5*(int)(i/3) + picWidth;
                 }
                 
