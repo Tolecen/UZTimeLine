@@ -303,19 +303,25 @@
         [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:url options:SDWebImageDownloaderUseNSURLCache progress:^(NSInteger receivedSize, NSInteger expectedSize) {
             
         } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
-            [iArray addObject:image];
-            if (i<9) {
-                i++;
-            }
-            [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"下载原图%d/%d...",i+1,(int)imgArray.count]];
-            if (i==imgArray.count) {
-                [SVProgressHUD showWithStatus:@"保存图片..."];
-//                dispatch_async(dispatch_get_main_queue(), ^{
-                     [self saveImageWithImgArray:iArray];
+            if (!error) {
+                [iArray addObject:image];
+                NSLog(@"error:%@,finished:%d",error,finished);
+                if (i<9) {
+                    i++;
+                }
+                [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"下载原图%d/%d...",i+1,(int)imgArray.count]];
+                if (i==imgArray.count) {
+                    [SVProgressHUD showWithStatus:@"保存图片..."];
+                    //                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self saveImageWithImgArray:iArray];
                     
-//                });
-               
+                    //                });
+                    
+                }
             }
+            else
+                [SVProgressHUD showErrorWithStatus:@"图片下载失败"];
+
         }];
     }
 }
