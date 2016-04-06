@@ -51,5 +51,63 @@
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UZTimeline/Module/Timeline/ViewController/UZTimelineVC.m"
+            timestampString = "481624070.785286"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "303"
+            endingLineNumber = "303"
+            landmarkName = "-shareBtnToDoWithImgArray:content:"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[UZTimelineVC shareBtnToDoWithImgArray:content:]"
+                  moduleName = "UZTimeline"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Timeline/ViewController/UZTimelineVC.m"
+                  timestampString = "481516147.780856"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "301"
+                  endingLineNumber = "301"
+                  offsetFromSymbolStart = "949">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__49-[UZTimelineVC shareBtnToDoWithImgArray:content:]_block_invoke"
+                  moduleName = "UZTimeline"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Timeline/ViewController/UZTimelineVC.m"
+                  timestampString = "481516147.781003"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

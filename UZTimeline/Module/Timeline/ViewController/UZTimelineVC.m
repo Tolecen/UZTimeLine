@@ -25,6 +25,7 @@
 {
     int pageIndex;
     int pageSize;
+    NSMutableArray * savingImgArray;
 }
 @property (nonatomic,strong)UITableView * tableView;
 @property (nonatomic,strong)NSMutableArray * dataArray;
@@ -290,7 +291,8 @@
 
 -(void)shareBtnToDoWithImgArray:(NSArray *)imgArray content:(NSString *)content
 {
-    
+    UIPasteboard *pasteboard=[UIPasteboard generalPasteboard];
+    pasteboard.string = content;
     NSMutableArray * iArray = [NSMutableArray array];
     __block int i = 0;
     [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"下载原图1/%d...",(int)imgArray.count]];
@@ -307,7 +309,7 @@
             if (i==imgArray.count) {
                 [SVProgressHUD showWithStatus:@"保存图片..."];
 //                dispatch_async(dispatch_get_main_queue(), ^{
-                     [self saveImageWithImgArray:iArray content:content];
+                     [self saveImageWithImgArray:iArray];
                     
 //                });
                
@@ -315,37 +317,65 @@
         }];
     }
 }
--(void)saveImageWithImgArray:(NSMutableArray *)array content:(NSString *)content
+-(void)saveImageWithImgArray:(NSMutableArray *)array
 {
-    __block int i = 0;
-    for (UIImage * image in array) {
-        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        // Request to save the image to camera roll
-        [library
-         writeImageToSavedPhotosAlbum:[image CGImage]
-         orientation:(ALAssetOrientation)image.imageOrientation
-         completionBlock:^(NSURL *assetURL, NSError *error){
-             if (!error) {
-                 i++;
-                 if (i==array.count) {
-                     [SVProgressHUD dismiss];
-//                     [self shareToFriendCircleWithContent:content];
-                     
-                     [self performSelectorOnMainThread:@selector(shareToFriendCircleWithContent:) withObject:content waitUntilDone:YES];
-                 }
-             }
-             else {
-                 
-             }
-         }];
-    }
+    savingImgArray = array;
+    [self saveNextImage];
+//    __block int i = 0;
+//    for (UIImage * image in array) {
+//        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+//        // Request to save the image to camera roll
+//        [library
+//         writeImageToSavedPhotosAlbum:[image CGImage]
+//         orientation:(ALAssetOrientation)image.imageOrientation
+//         completionBlock:^(NSURL *assetURL, NSError *error){
+//             if (!error) {
+//                 i++;
+//                 if (i==array.count) {
+//                     [SVProgressHUD dismiss];
+////                     [self shareToFriendCircleWithContent:content];
+//                     
+//                     [self performSelectorOnMainThread:@selector(shareToFriendCircleWithContent) withObject:nil waitUntilDone:YES];
+//                 }
+//             }
+//             else {
+//                 
+//             }
+//         }];
+//    }
     
 }
 
--(void)shareToFriendCircleWithContent:(NSString *)content
+-(void)saveNextImage
 {
-    UIPasteboard *pasteboard=[UIPasteboard generalPasteboard];
-    pasteboard.string = content;
+    if (savingImgArray.count > 0) {
+        UIImage *image = [savingImgArray objectAtIndex:0];
+        UIImageWriteToSavedPhotosAlbum(image, self, @selector(savedPhotoImage:didFinishSavingWithError:contextInfo:), nil);
+    }
+    else {
+        [self saveImageAllDone];
+    }
+}
+
+-(void)saveImageAllDone
+{
+    [SVProgressHUD dismiss];
+     [self performSelectorOnMainThread:@selector(shareToFriendCircleWithContent) withObject:nil waitUntilDone:YES];
+}
+
+-(void) savedPhotoImage:(UIImage*)image didFinishSavingWithError: (NSError *)error contextInfo: (void *)contextInfo {
+    if (error) {
+        //NSLog(@"%@", error.localizedDescription);
+    }
+    else {
+        [savingImgArray removeObjectAtIndex:0];
+    }
+    [self saveNextImage];
+}
+
+-(void)shareToFriendCircleWithContent
+{
+    
     
     UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"发布到微信" message:@"全部图片已保存到相册，文字已复制到剪贴板！请打开微信到朋友圈粘贴文字和上传图片" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开微信", nil];
     [alert show];
