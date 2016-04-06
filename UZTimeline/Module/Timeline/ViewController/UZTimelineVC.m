@@ -304,7 +304,9 @@
             
         } completed:^(UIImage *image, NSData *data, NSError *error, BOOL finished) {
             [iArray addObject:image];
-            i++;
+            if (i<9) {
+                i++;
+            }
             [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"下载原图%d/%d...",i+1,(int)imgArray.count]];
             if (i==imgArray.count) {
                 [SVProgressHUD showWithStatus:@"保存图片..."];
