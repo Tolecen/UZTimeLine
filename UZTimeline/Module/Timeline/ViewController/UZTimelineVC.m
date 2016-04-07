@@ -39,7 +39,7 @@
 }
 
 - (NSString *)title {
-    return @"TimeLine";
+    return @"微商云助手";
 }
 
 - (void)viewDidLoad {
