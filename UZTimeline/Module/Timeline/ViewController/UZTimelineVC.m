@@ -26,6 +26,8 @@
     int pageIndex;
     int pageSize;
     NSMutableArray * savingImgArray;
+    
+    BOOL haveImg;
 }
 @property (nonatomic,strong)UITableView * tableView;
 @property (nonatomic,strong)NSMutableArray * dataArray;
@@ -42,6 +44,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    haveImg = NO;
     
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(toSettingPage)];
     
@@ -293,6 +297,15 @@
 {
     UIPasteboard *pasteboard=[UIPasteboard generalPasteboard];
     pasteboard.string = content;
+    if (imgArray.count>0) {
+        haveImg = YES;
+    }
+    else
+    {
+        haveImg = NO;
+        [self shareToFriendCircleWithContent];
+        return;
+    }
     NSMutableArray * iArray = [NSMutableArray array];
     __block int i = 0;
     [SVProgressHUD showWithStatus:[NSString stringWithFormat:@"下载原图1/%d...",(int)imgArray.count]];
@@ -385,7 +398,7 @@
 {
     
     
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"发布到微信" message:@"全部图片已保存到相册，文字已复制到剪贴板！请打开微信到朋友圈粘贴文字和上传图片" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开微信", nil];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"发布到微信" message:haveImg?@"全部图片已保存到相册，文字已复制到剪贴板！请打开微信到朋友圈粘贴文字和上传图片":@"文字已复制到剪贴板！请打开微信到朋友圈粘贴文字" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"打开微信", nil];
     [alert show];
 
 }
