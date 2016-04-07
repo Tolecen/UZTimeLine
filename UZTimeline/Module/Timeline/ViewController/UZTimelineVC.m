@@ -232,7 +232,7 @@
     NSDictionary * dict = [NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",pageSize],@"pageSize",[NSString stringWithFormat:@"%d",pageIndex],@"page",[UZAppUserManager getUserId],@"userId", nil];
     [[UZAPIClient sharedClient] postDefaultClientWithURLPath:@"getAllTopics" parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray * dataA = responseObject[@"data"];
-//        NSLog(@"dddd:%@",dataA);
+        NSLog(@"dddd:%@",dataA);
         if (!_dataArray) {
             _dataArray = [NSMutableArray array];
         }
