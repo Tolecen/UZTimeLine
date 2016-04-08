@@ -84,12 +84,12 @@
                   moduleName = "UZTimeline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Timeline/ViewController/UZTimelineVC.m"
-                  timestampString = "481516147.780856"
+                  timestampString = "481773383.877125"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "301"
-                  endingLineNumber = "301"
-                  offsetFromSymbolStart = "949">
+                  startingLineNumber = "316"
+                  endingLineNumber = "316"
+                  offsetFromSymbolStart = "1137">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -99,11 +99,11 @@
                   moduleName = "UZTimeline"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/taoxinle/Projects/UZTimeLine/UZTimeline/Module/Timeline/ViewController/UZTimelineVC.m"
-                  timestampString = "481516147.781003"
+                  timestampString = "481773383.877277"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "303"
-                  endingLineNumber = "303"
+                  startingLineNumber = "318"
+                  endingLineNumber = "318"
                   offsetFromSymbolStart = "20">
                </Location>
             </Locations>
