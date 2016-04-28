@@ -119,8 +119,8 @@
 		D82621CA1CABA3DA00838ADB /* SDPieLoopProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = D82621C81CABA3DA00838ADB /* SDPieLoopProgressView.m */; };
 		D82621CF1CABB10800838ADB /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82621CE1CABB10800838ADB /* SettingViewController.m */; };
 		D86452D31CAD1C7C006742E0 /* AgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D86452D21CAD1C7C006742E0 /* AgreementViewController.m */; };
-		D86452D51CAD1D12006742E0 /* UserAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = D86452D41CAD1D12006742E0 /* UserAgreement.html */; };
 		D86452D81CAD31F7006742E0 /* IdentifyingString.m in Sources */ = {isa = PBXBuildFile; fileRef = D86452D71CAD31F7006742E0 /* IdentifyingString.m */; };
+		D885E3C81CD1A36A00024705 /* UserAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = D885E3C71CD1A36A00024705 /* UserAgreement.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -357,9 +357,9 @@
 		D8391D6A1CAB652D00ABA5AC /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		D86452D11CAD1C7C006742E0 /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
 		D86452D21CAD1C7C006742E0 /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
-		D86452D41CAD1D12006742E0 /* UserAgreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = UserAgreement.html; sourceTree = "<group>"; };
 		D86452D61CAD31F7006742E0 /* IdentifyingString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyingString.h; sourceTree = "<group>"; };
 		D86452D71CAD31F7006742E0 /* IdentifyingString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyingString.m; sourceTree = "<group>"; };
+		D885E3C71CD1A36A00024705 /* UserAgreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = UserAgreement.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,7 +403,7 @@
 				0695360F1CA770760068204F /* AppDelegate.h */,
 				069536101CA770760068204F /* AppDelegate.m */,
 				069536181CA770760068204F /* Assets.xcassets */,
-				D86452D41CAD1D12006742E0 /* UserAgreement.html */,
+				D885E3C71CD1A36A00024705 /* UserAgreement.html */,
 				0695361D1CA770760068204F /* Info.plist */,
 				0695360C1CA770760068204F /* Supporting Files */,
 			);
@@ -1032,7 +1032,6 @@
 				TargetAttributes = {
 					069536081CA770760068204F = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4225KQ7WC5;
 					};
 				};
 			};
@@ -1064,7 +1063,7 @@
 				D82621B21CABA3CD00838ADB /* error_x@2x.png in Resources */,
 				D82621B11CABA3CD00838ADB /* error_x.png in Resources */,
 				0695376A1CA77CD20068204F /* MBProgressHUD.bundle in Resources */,
-				D86452D51CAD1D12006742E0 /* UserAgreement.html in Resources */,
+				D885E3C81CD1A36A00024705 /* UserAgreement.html in Resources */,
 				D82621711CAB774600838ADB /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1251,8 +1250,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Xinle Tao (4225KQ7WC5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Xinle Tao (4225KQ7WC5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhongshan Zhang (GM3VHPP425)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Zhongshan Zhang (GM3VHPP425)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1269,7 +1268,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "f92fbd60-0f32-4884-b38a-f4122a93ef34";
+				PROVISIONING_PROFILE = "6915a371-acda-4624-b1a7-602a44d75ab2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1280,14 +1279,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xinle Tao (CUVR22NJYL)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = UZTimeline/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UZTimeline/ThirdFramework/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.uzero.uztimeline;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhongshan.weishangzhushou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1297,15 +1296,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Xinle Tao (4225KQ7WC5)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Zhongshan Zhang (GM3VHPP425)";
 				INFOPLIST_FILE = UZTimeline/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UZTimeline/ThirdFramework/WeChatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.uzero.uztimeline;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhongshan.weishangzhushou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "6915a371-acda-4624-b1a7-602a44d75ab2";
 			};
 			name = Release;
 		};

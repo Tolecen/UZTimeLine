@@ -16,8 +16,8 @@
 typedef void(^successBlock)(NSURLSessionDataTask *task, id responseObject);
 typedef void(^failureBlock)(NSURLSessionDataTask *task, NSError *error);
 
-extern NSString *const UZAPIAppServerBaseURLString;
-extern NSString *const UZAPIAppImgBaseURLString;
+extern NSString * UZAPIAppServerBaseURLString;
+extern NSString * UZAPIAppImgBaseURLString;
 extern NSString *const UZAPIUploadServerBaseURLString;
 extern NSString *const HK_QNTOKEN;
 

@@ -77,15 +77,15 @@
 //    [self.view addSubview:registeBtn];
 //    self.registeBtn = registeBtn;
     
-    UIButton * registBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [registBtn setBackgroundColor:[UIColor clearColor]];
-    [registBtn setTitle:@"注册新用户>" forState:UIControlStateNormal];
-    [registBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
-    registBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
-    [registBtn setTitleColor:[UIColor colorWithHexString:@"2dd3f6"] forState:UIControlStateNormal];
-    [registBtn addTarget:self action:@selector(inner_RegisteAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:registBtn];
-    self.registeBtn = registBtn;
+//    UIButton * registBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [registBtn setBackgroundColor:[UIColor clearColor]];
+//    [registBtn setTitle:@"注册新用户>" forState:UIControlStateNormal];
+//    [registBtn.titleLabel setFont:[UIFont systemFontOfSize:14]];
+//    registBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+//    [registBtn setTitleColor:[UIColor colorWithHexString:@"2dd3f6"] forState:UIControlStateNormal];
+//    [registBtn addTarget:self action:@selector(inner_RegisteAction:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:registBtn];
+//    self.registeBtn = registBtn;
     
     UIButton * pBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [pBtn setBackgroundColor:[UIColor clearColor]];
@@ -114,12 +114,12 @@
 //        make.height.mas_equalTo(35);
 //    }];
     
-    [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self.view).offset(-20);
-        make.top.mas_equalTo(loginBtn.mas_bottom).offset(10);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(20);
-    }];
+//    [registBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(self.view).offset(-20);
+//        make.top.mas_equalTo(loginBtn.mas_bottom).offset(10);
+//        make.width.mas_equalTo(100);
+//        make.height.mas_equalTo(20);
+//    }];
     
     [pBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.view).offset(20);

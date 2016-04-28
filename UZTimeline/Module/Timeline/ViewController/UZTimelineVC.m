@@ -264,7 +264,12 @@
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSDictionary * dict = error.userInfo;
-        [SVProgressHUD showErrorWithStatus:dict[@"message"]];
+        if (dict && dict[@"message"] && [dict[@"message"] length]>0) {
+            [SVProgressHUD showErrorWithStatus:dict[@"message"]];
+        }
+        else
+           [SVProgressHUD showErrorWithStatus:@"网络不好,请稍后再试"];
+        
         [_tableView.mj_header endRefreshing];
         [_tableView.mj_footer endRefreshing];
     }];
