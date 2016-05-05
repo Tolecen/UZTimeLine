@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
-    [self getRealURL];
+//    [self getRealURL];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UZAppStartUp *appStartUp = [UZAppStartUp appStartUp];
     self.window.rootViewController = appStartUp.rootViewController;
@@ -30,29 +30,29 @@
 
 -(void)getRealURL
 {
-    NSString * storeUrl = [SFHFKeychainUtils getPasswordForUsername:@"RealBaseUrl" andServiceName:UZTimeLineSeivice error:nil];
-    if (storeUrl && ![storeUrl containsString:@"ningweb"]) {
-        UZAPIAppServerBaseURLString =storeUrl;
-        UZAPIAppImgBaseURLString = [SFHFKeychainUtils getPasswordForUsername:@"ImgBaseUrl" andServiceName:UZTimeLineSeivice error:nil];
-        [UZAPIClient sharedClient].baseURL = [NSURL URLWithString:UZAPIAppServerBaseURLString];
-        return;
-    }
-    NSDictionary * dict = @{};
-    [[UZAPIClient sharedClient] postDefaultClientWithURLPath:@"getBaseUrl" parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSDictionary * uinfo = responseObject[@"data"];
-        NSString * realBaseUrl = uinfo[@"base_url"];
-        NSString * imgBaseUrl = uinfo[@"image_url"];
-        UZAPIAppServerBaseURLString = realBaseUrl;
-        UZAPIAppImgBaseURLString = imgBaseUrl;
-        
-        [UZAPIClient sharedClient].baseURL = [NSURL URLWithString:realBaseUrl];
-        
-        [SFHFKeychainUtils storeUsername:@"RealBaseUrl" andPassword:realBaseUrl forServiceName:UZTimeLineSeivice updateExisting:YES error:nil];
-        [SFHFKeychainUtils storeUsername:@"ImgBaseUrl" andPassword:imgBaseUrl forServiceName:UZTimeLineSeivice updateExisting:YES error:nil];
-       
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-       
-    }];
+//    NSString * storeUrl = [SFHFKeychainUtils getPasswordForUsername:@"RealBaseUrl" andServiceName:UZTimeLineSeivice error:nil];
+//    if (storeUrl && ![storeUrl containsString:@"ningweb"]) {
+//        UZAPIAppServerBaseURLString =storeUrl;
+//        UZAPIAppImgBaseURLString = [SFHFKeychainUtils getPasswordForUsername:@"ImgBaseUrl" andServiceName:UZTimeLineSeivice error:nil];
+//        [UZAPIClient sharedClient].baseURL = [NSURL URLWithString:UZAPIAppServerBaseURLString];
+//        return;
+//    }
+//    NSDictionary * dict = @{};
+//    [[UZAPIClient sharedClient] postDefaultClientWithURLPath:@"getBaseUrl" parameters:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+//        NSDictionary * uinfo = responseObject[@"data"];
+//        NSString * realBaseUrl = uinfo[@"base_url"];
+//        NSString * imgBaseUrl = uinfo[@"image_url"];
+//        UZAPIAppServerBaseURLString = realBaseUrl;
+//        UZAPIAppImgBaseURLString = imgBaseUrl;
+//        
+//        [UZAPIClient sharedClient].baseURL = [NSURL URLWithString:realBaseUrl];
+//        
+//        [SFHFKeychainUtils storeUsername:@"RealBaseUrl" andPassword:realBaseUrl forServiceName:UZTimeLineSeivice updateExisting:YES error:nil];
+//        [SFHFKeychainUtils storeUsername:@"ImgBaseUrl" andPassword:imgBaseUrl forServiceName:UZTimeLineSeivice updateExisting:YES error:nil];
+//       
+//    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+//       
+//    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

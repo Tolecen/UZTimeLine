@@ -13,15 +13,15 @@ static const CGFloat kUZDefaultTimeoutInterval = 15.f;
 NSString *const kUZSuccessDataCode  = @"0";
 
 #ifdef DEBUG
-NSString * UZAPIAppServerBaseURLString = @"http://ningweb.com/product_picture/api/index.php/nightkiss/";
-//NSString *const UZAPIAppServerBaseURLString = @"http://oxinxian.com/api/index.php/nightkiss/";
+//NSString *const UZAPIAppServerBaseURLString = @"http://ningweb.com/product_picture/api/index.php/nightkiss/";
+NSString *const UZAPIAppServerBaseURLString = @"http://oxinxian.com/api/index.php/nightkiss/";
 NSString *const UZAPIUploadServerBaseURLString = @"http://m.ririzhuan.com";
-NSString * UZAPIAppImgBaseURLString = @"http://image.mengbaopai.com/";
+NSString *const UZAPIAppImgBaseURLString = @"http://wsimage.oxinxian.com/";
 #else
-NSString * UZAPIAppServerBaseURLString = @"http://ningweb.com/product_picture/api/index.php/nightkiss/";
-//NSString *const UZAPIAppServerBaseURLString = @"http://oxinxian.com/api/index.php/nightkiss/";
+//NSString *const UZAPIAppServerBaseURLString = @"http://ningweb.com/product_picture/api/index.php/nightkiss/";
+NSString *const UZAPIAppServerBaseURLString = @"http://oxinxian.com/api/index.php/nightkiss/";
 NSString *const UZAPIUploadServerBaseURLString = @"http://m.ririzhuan.com";
-NSString * UZAPIAppImgBaseURLString = @"http://image.mengbaopai.com/";
+NSString *const UZAPIAppImgBaseURLString = @"http://wsimage.oxinxian.com/";
 #endif
 
 NSString *const HK_QNTOKEN   = @"HK_QNTOKEN";
