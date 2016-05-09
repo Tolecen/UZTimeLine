@@ -39,7 +39,7 @@
 }
 
 - (NSString *)title {
-    return @"微商云助手";
+    return @"瀚宇轩";
 }
 
 - (void)viewDidLoad {
